@@ -34,8 +34,9 @@ float ShadowCasting(in vec2 pos, in Circle[5] obstacles, in Circle light) {
     return resultDist;
 }
 
-void main() {
-    vec2 uv = gl_FragCoord.xy / iResolution.xy;
+void mainImage( out vec4 fragColor, in vec2 fragCoord )
+{
+    vec2 uv = fragCoord.xy / iResolution.y;
     vec3 c = vec3(0.);
 
     Circle light = Circle(vec2(0.5), 0.05, vec3(1.));
@@ -45,7 +46,7 @@ void main() {
     c += light.r / pow(length(lightToUV), 0.8);
 
     Circle[5] obstacles = Circle[5] (
-        Circle(iMouse.xy / iResolution.xy, 0.03, vec3(1., 0, 0)),
+        Circle(iMouse.xy / iResolution.y, 0.03, vec3(1., 0, 0)),
         Circle(vec2(0.3, 0.3), 0.04, vec3(0.4, 0.3, 0.7)),
         Circle(vec2(0.7, 0.2), 0.1, vec3(1., 0.7, 0)),
         Circle(vec2(0.6, 0.7), 0.01, vec3(1., 0, 1)),
@@ -60,5 +61,5 @@ void main() {
         c *= 0.5;
     }
 
-    gl_FragColor = vec4(c, 1.);
+    fragColor = vec4(c, 1.);    
 }
