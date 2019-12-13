@@ -1,4 +1,4 @@
-#define MAX_RAY_STEPS 50
+#define MAX_RAY_STEPS 100
 #define EPS 0.0001
 #define PI radians(180.)
 
@@ -116,6 +116,12 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
     }
     
     col *= diffuse;
+    
+    float fogCoef = 1. - exp(-rmi.sdf * 0.2);
+    float rxL = max(dot(rd, normalize(light.p - ro)), 0.);
+    vec3 fogCol = mix(vec3(0.53, 0.81, 0.92), vec3(0.98, 0.83, 0.64), pow(rxL, 50.));
+    
+    col = mix(col, fogCol, fogCoef);
     
     fragColor = vec4(col, 1.0);
 }
