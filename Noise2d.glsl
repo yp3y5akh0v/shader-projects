@@ -35,8 +35,8 @@ float snoise(vec2 uv, float scale, float steps) {
 
 void mainImage( out vec4 fragColor, in vec2 fragCoord )
 {    
-    vec2 uv = fragCoord / iResolution.xy;
-    float r = snoise(uv + iTime * 0.1, 6., 32.);
+    vec2 uv = fragCoord / iResolution.y;
+    float r = snoise(uv, 6., 32.);
 	vec3 col = vec3(r);
     
     fragColor = vec4(col,1.0);
