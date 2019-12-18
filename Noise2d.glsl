@@ -26,17 +26,17 @@ float snoise(vec2 uv, float scale, float steps) {
 	float s = 0., sk = 0.; 
     for (float i = 0.; i < steps; i++) {
         float k = pow(2., i);
-    	s += noise(uv, scale * (i + 1.)) / k;
+    	s += noise(uv, scale * k) / k;
         sk += 1. / k;
         uv *= rot(2. * PI * (i + 1.) / steps);
     } 
-    return s / sk;
+    return smoothstep(0., 1., s / sk);
 }
 
 void mainImage( out vec4 fragColor, in vec2 fragCoord )
 {    
     vec2 uv = fragCoord / iResolution.y;
-    float r = snoise(uv, 6., 32.);
+    float r = snoise(uv, 8., 32.);
 	vec3 col = vec3(r);
     
     fragColor = vec4(col,1.0);
