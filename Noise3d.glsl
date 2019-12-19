@@ -1,7 +1,7 @@
 #define PI radians(180.)
 
 float rand(vec3 p) {
-	return fract(8712913.13 * (1. + sin(dot(p, vec3(932124.23, 2413234.11, 543201.69)))) / 2.);
+    return fract(sin(dot(sin(p), vec3(12.9898, 78.233, 37.719))) * 143758.5453);
 }
 
 float noise(vec3 p, float scale) {

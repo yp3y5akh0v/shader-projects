@@ -1,7 +1,7 @@
 #define PI radians(180.)
 
 float rand(vec2 uv) {
-	return fract(8712913.13 * (sin(dot(uv, vec2(932124.23, 2413234.11))) + 1.) / 2.);
+    return fract(sin(dot(sin(uv), vec2(12.9898, 78.233))) * 143758.5453);
 }
 
 mat2 rot(float a) {

@@ -3,7 +3,7 @@
 #define PI radians(180.)
 
 float rand(vec2 uv) {
-	return fract(8712913.13 * (sin(dot(uv, vec2(324.23, 24134.11))) + 1.) / 2.);
+    return fract(sin(dot(sin(uv), vec2(12.9898, 78.233))) * 143758.5453);
 }
 
 mat2 rot(float a) {
@@ -79,43 +79,4 @@ RayMarchInfo RayMarch(vec3 ro, vec3 rd, float t) {
         sdf += d;
     }
     return RayMarchInfo(sdf, raySteps);
-}
-
-void mainImage( out vec4 fragColor, in vec2 fragCoord )
-{
-    vec2 uv = (fragCoord - 0.5 * iResolution.xy) / iResolution.y;
-    vec3 rd = normalize(vec3(uv.x, uv.y, 1.));
-    vec3 ro = vec3(0.5, 0.5, -2.);
-    vec3 col = vec3(0.);
-    float t = iTime;
-    
-    ro.z += t;
-    
-    Light light = Light(vec3(0.5, 1.5, -1. + t * log(log(t * t + 1.))), 0.06);
-    RayMarchInfo rmi = RayMarch(ro, rd, t);
-
-    vec3 p = ro + rmi.sdf * rd;
-    vec3 n = GetNormal(p, t); 
-    vec3 pToL = light.p - p;
-    vec3 pToLN = normalize(pToL);
-    
-    RayMarchInfo lrmi = RayMarch(p + 0.3 * n, pToLN, t);
-    
-    col = vec3(1. / pow(length(pToL), 0.8));
-    
-    float diffuse = clamp(dot(n, pToLN), 0., 1.);
-    
-    if (lrmi.sdf < length(pToL) - light.r) {
-    	col *= 0.3;
-    }
-    
-    col *= diffuse;
-    
-    float fogCoef = 1. - exp(-rmi.sdf * 0.2);
-    float rxL = max(dot(rd, normalize(light.p - ro)), 0.);
-    vec3 fogCol = mix(vec3(0.53, 0.81, 0.92), vec3(0.98, 0.83, 0.64), pow(rxL, 50.));
-    
-    col = mix(col, fogCol, fogCoef);
-    
-    fragColor = vec4(col, 1.0);
 }
