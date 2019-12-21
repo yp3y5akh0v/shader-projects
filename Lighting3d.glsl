@@ -97,7 +97,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
     vec3 col = vec3(0.);
     float t = iTime;
     
-    Light light = Light(vec3(0.5, 1.5, 0.5), 0.06);
+    Light light = Light(vec3(0.5 + sin(t), 1.5, 0.1), 0.07);
     RayMarchInfo rmi = RayMarch(ro, rd, t);
 
     vec3 p = ro + rmi.sdf * rd;
@@ -122,6 +122,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
     vec3 fogCol = mix(vec3(0.53, 0.81, 0.92), vec3(0.98, 0.83, 0.64), pow(rxL, 50.));
     
     col = mix(col, fogCol, fogCoef);
+    col += pow(rxL, 200. * length(light.p - ro));
     
     fragColor = vec4(col, 1.0);
 }
