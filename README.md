@@ -7,3 +7,4 @@ Noise3d.glsl: https://www.shadertoy.com/view/Wl3GzB<br/>
 Terrain3d.glsl: https://www.shadertoy.com/view/Wld3RS<br/>
 NoiseCloudTrace.glsl: https://www.shadertoy.com/view/3l3Gz2<br/>
 LightingBlob3d.glsl: https://www.shadertoy.com/view/3ltGD7<br/>
+Spiral2dEffect.glsl: https://www.shadertoy.com/view/WsSBRV<br/>
