@@ -9,7 +9,7 @@ vec2 rot(vec2 p, float a) {
 
 void mainImage( out vec4 fragColor, in vec2 fragCoord )
 {    
-    vec2 uv = (fragCoord - 0.5 * iResolution.x) / iResolution.y + vec2(0., 0.4);
+    vec2 uv = (fragCoord - 0.5 * iResolution.xy) / iResolution.y;
     vec3 col = vec3(0.);
     float t = iTime;
     vec2 p = uv;
