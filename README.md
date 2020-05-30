@@ -9,3 +9,4 @@ NoiseCloudTrace.glsl: https://www.shadertoy.com/view/3l3Gz2<br/>
 LightingBlob3d.glsl: https://www.shadertoy.com/view/3ltGD7<br/>
 Spiral2dEffect.glsl: https://www.shadertoy.com/view/WsSBRV<br/>
 RadarEffect.glsl: https://www.shadertoy.com/view/3sBfzV<br/>
+TrajectoryQuadraticBezier.glsl: https://www.shadertoy.com/view/WdjfWV<br/>
