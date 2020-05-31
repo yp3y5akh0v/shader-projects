@@ -43,7 +43,7 @@ void mainImage(out vec4 o, in vec2 p)
     float dbc = distToV(p, b, tbc - b);
     float dr = distToV(p, tab, tbc - tab);
     
-    o = vec4(0.001 / s);
+    o = vec4(0.002 / s);
     o += vec4(0.003 / dab, 0.003 / dbc, 0.003 / dr, 0.);
-    o += vec4(0.006 / length(p - tr));
+    o += vec4(0.004 / length(p - tr));
 }
