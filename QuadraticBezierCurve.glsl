@@ -1,6 +1,8 @@
 #define N 30.
-#define R iResolution
+#define R iResolution.xy
+#define M iMouse.xy
 #define T (0.5 + 0.5 * sin(iTime))
+#define D(p) ((p - 0.5 * R.xy) / R.y)
 
 float distToV(vec2 p, vec2 o, vec2 v) {
     vec2 op = p - o;
@@ -23,9 +25,10 @@ vec2 QuadraticBezier(vec2 a, vec2 b, vec2 c, float t) {
 
 void mainImage(out vec4 o, in vec2 p)
 {
-    p = (p - 0.5 * R.xy) / R.y;    
+    p = D(p);
+    vec2 m = D(M);    
     vec2 a = vec2(-0.6, -0.3);
-    vec2 b = vec2(0., 0.4);
+    vec2 b = vec2(m.x, m.y);
     vec2 c = vec2(0.6, -0.3);
     float s = 1. / 0.;
     
