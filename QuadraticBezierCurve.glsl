@@ -1,4 +1,4 @@
-#define N 100.
+#define N 30.
 #define R iResolution
 #define T (0.5 + 0.5 * sin(iTime))
 
@@ -29,7 +29,7 @@ void mainImage(out vec4 o, in vec2 p)
     vec2 c = vec2(0.6, -0.3);
     float s = 1. / 0.;
     
-    for (float i = 1.; i < N; i++) {
+    for (float i = 1.; i <= N; i++) {
         vec2 qb0 = QuadraticBezier(a, b, c, (i - 1.) / N);
         vec2 qb1 = QuadraticBezier(a, b, c, i / N);
         float d = distToV(p, qb0, qb1 - qb0);
