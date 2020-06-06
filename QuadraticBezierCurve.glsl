@@ -3,7 +3,8 @@
 #define M iMouse.xy
 #define t iTime
 #define T (0.5 + 0.5 * sin(t))
-#define D(p) ((p - 0.5 * R.xy) / R.y)
+#define D(p) (((p) - 0.5 * R) / R.y)
+#define inf 1e32
 
 float distToV(vec2 p, vec2 o, vec2 v) {
     vec2 op = p - o;
@@ -31,7 +32,7 @@ void mainImage(out vec4 o, in vec2 p)
     vec2 a = vec2(-0.6, -0.3);
     vec2 b = vec2(m.x, m.y);
     vec2 c = vec2(0.6, -0.3);
-    float s = 1. / 0.;
+    float s = inf;
     
     for (float i = 1.; i <= N; i++) {
         vec2 qb0 = QuadraticBezier(a, b, c, (i - 1.) / N);
